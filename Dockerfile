@@ -1,13 +1,6 @@
-FROM centos/ruby-25-centos7
-USER default
-EXPOSE 8080
-ENV RACK_ENV production
-ENV RAILS_ENV production
-COPY . /opt/app-root/src/
-ENV GEM_HOME ~/.gem
-RUN scl enable rh-ruby25 "bundle install"
-CMD ["scl", "enable", "rh-ruby25", "./run.sh"]
-
-USER root
-RUN chmod og+rw /opt/app-root/src/db
-# USER default
+FROM scratch
+MAINTAINER Jessica Forrester <jforrest@redhat.com>
+COPY bin/hello-openshift /hello-openshift
+EXPOSE 8080 8888
+# USER 1001
+ENTRYPOINT ["/hello-openshift"]
