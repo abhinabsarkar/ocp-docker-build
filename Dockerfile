@@ -1,3 +1,4 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 
 # Set ASPNETCORE_URLS
 ENV ASPNETCORE_URLS=https://*:8080
